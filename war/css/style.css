@@ -1,0 +1,132 @@
+* {
+    padding: 0;
+    margin: 0;
+} 
+
+body {
+    background: #fff url(../images/bg.png) repeat-x;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: #555;
+}
+
+img { border: none; }
+a { color: #91DC47; text-decoration: none; }
+a:hover { text-decoration: underline; color : #000; }
+
+#wrap {
+    margin: 0 auto;
+    width: 800px;
+}
+
+#header { 
+    height: 150px;
+}
+#header h1 {
+    font-size: 30px;
+    font-weight: 100;
+    letter-spacing: -3px;
+    padding: 55px 0 5px 0;
+}
+#header h1 a {
+    /*     color: #EEEEEE; */
+    color: #555;
+    text-decoration: none;
+}
+#header h1 a:hover {
+    color: #555;
+    text-decoration: none;
+}
+#header h2 {
+    color: #FFF;
+    font-size: 19px;
+    font-weight: 100;
+    padding: 0 0 0 0;
+    letter-spacing: -1px;
+    line-height: 12px;
+}
+
+#content {
+    padding: 10px 0;
+}
+
+.left {
+    width: 568px;
+    float: left;
+    text-align: justify;
+}
+.left h2 {
+    color: #90B4FE;
+    font-size: 22px;
+    letter-spacing: -1px;
+    font-weight: 100;
+    padding : 15px 0 15px 0;
+}
+
+.left ul {
+    margin-left: 20px;
+}
+
+.left ol {
+    margin-left: 20px;
+}
+
+.left textarea {
+    width: 100%;
+    height: 300px;
+    font-size: 12px;
+}
+
+.left dt {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.left pre {
+    margin: 10px 0;
+    padding: 3px;
+    border: solid 1px #dedede;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.right {
+    width: 160px;
+    float: right;
+    padding: 10px;
+    border-left: 1px solid #dedede;
+    font-size: 14px;
+    font-weight: 600;
+}
+.right ul {
+    list-style-type: none;
+    padding: 5px 10px 10px 10px;
+}
+
+.right h2 {
+    height: 30px;
+    font-size: 15px;
+    color: #666;
+}
+.right a { text-decoration: none }
+
+hr {
+    border-width: 1px 0px 0px 0px;
+    border-style: dashed;
+    border-color: #bbb;
+    height: 1px;
+    width: 100%;
+    margin: 10px;
+}
+
+#footer {
+    border-top: 1px solid #dedede;
+    text-align: center;
+    color: #333;
+    font-size: 15px;
+    padding-top: 10px;
+    margin-top: 10px;
+}

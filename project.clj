@@ -22,4 +22,8 @@
   :namespaces [rd-clj
                rd-clj.utils
                rd-clj.daccess.dict
-               rd-clj.view.error rd-clj.view.entry rd-clj.view.hello rd-clj.view.tag])
+               rd-clj.validator.validator
+               rd-clj.view.entry
+               rd-clj.view.layout
+               rd-clj.view.hello
+               rd-clj.view.error])

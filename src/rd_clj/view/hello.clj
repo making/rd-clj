@@ -1,9 +1,14 @@
 (ns rd-clj.view.hello
   (:use [hiccup.core :only [html h]]
+        [ring.util.response :only [redirect]]
         [rd-clj.view.layout]
-        [rd-clj.daccess.dict]))
+        [am.ik.clj-gae-users.core]
+        [rd-clj.daccess.dict]
+        [rd-clj.view.entry :only [show-dicts]]))
 
-(defn hello []
+(defn 
+  #^{:route "*", :not-use-ns true}
+  hello []
   (default-layout {}
     [:p 
      [:h2 "逆引き一覧"]

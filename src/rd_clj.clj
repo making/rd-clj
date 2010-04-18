@@ -1,19 +1,22 @@
 (ns rd-clj
   (:gen-class 
    :extends javax.servlet.http.HttpServlet)
-  (:use [compojure.core :only [defroutes GET]]
-        [ring.util.servlet :only [defservice]])
-  (:require [rd-clj.view.hello :as hello]
-            [rd-clj.view.entry :as entry]
-            [rd-clj.view.tag :as tag]))
+  (:use [compojure.core :only [defroutes GET POST ANY]]
+        [ring.util.servlet :only [defservice]]
+        [rd-clj.utils])
+  (:require [rd-clj.view.layout :as layout]
+            [rd-clj.view.hello :as hello]
+            [rd-clj.view.entry :as entry]))
 
-(defroutes app
-  (GET "/entry/create" req (entry/create req))
-  (GET "/entry/view/:id" req (entry/view req))
-  (GET "/entry/edit/:id" req (entry/edit req))
-  (GET "/entry/delete/:id" req (entry/delete req))
-  (GET "/entry/list" _ (entry/list))
-  (GET "/tag/:tag" req (tag/list-dicts req))
-  (GET "/*" _ (hello/hello)))
+(defroutes+ app
+  (ANY entry/create)
+  (GET entry/view)
+  (ANY entry/edit)
+  (GET entry/delete)
+  (GET entry/list)
+  (GET entry/list-by-tag)
+  (GET login)
+  (GET logout)
+  (GET hello/hello))
 
 (defservice app)
