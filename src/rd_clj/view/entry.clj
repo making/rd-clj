@@ -6,6 +6,7 @@
         [am.ik.clj-gae-ds.core]
         [am.ik.clj-gae-users.core]
         [rd-clj.utils]
+        [rd-clj.common]
         [rd-clj.view.layout]
         [rd-clj.daccess.dict])
   (:require [rd-clj.logger :as log])

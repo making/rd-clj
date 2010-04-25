@@ -3,7 +3,7 @@
    :extends javax.servlet.http.HttpServlet)
   (:use [compojure.core :only [defroutes GET POST ANY]]
         [ring.util.servlet :only [defservice]]
-        [rd-clj.utils])
+        [rd-clj.common])
   (:require [rd-clj.view.layout :as layout]
             [rd-clj.view.hello :as hello]
             [rd-clj.view.entry :as entry]))

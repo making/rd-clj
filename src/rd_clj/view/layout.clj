@@ -3,7 +3,7 @@
         [ring.util.response :only [redirect]]
         [am.ik.clj-gae-ds.core]
         [am.ik.clj-gae-users.core]
-        [rd-clj.utils]
+        [rd-clj.common]
         [rd-clj.view.error]))
 
 (defmacro default-layout [{title :title, more-head :more-head} & body]

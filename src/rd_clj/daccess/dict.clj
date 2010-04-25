@@ -86,10 +86,10 @@
       (ds-put (map #(map-entity "tag" :name % :parent k) new-tags)))))
 
 (defn get-dicts 
-  ([num sorted-by]
-     (take num (query-seq (-> (q "dict") (srt sorted-by :desc)))))
+  ([num sorted-by asc-or-desc]
+     (take num (query-seq (-> (q "dict") (srt sorted-by asc-or-desc)))))
   ([num]
-     (get-dicts num :title))
+     (get-dicts num :title :asc))
   ([]
      (get-dicts +max-query-num+)))
 
