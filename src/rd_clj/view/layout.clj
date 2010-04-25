@@ -11,6 +11,7 @@
     (layout-template {:title ~title, :more-head ~more-head} ~@body)
     (catch Throwable e#
       (let [handled# (handle-error e#)]
+        (.printStackTrace e#)
         (layout-template {:title "Error!!"} handled#)))))
 
 (defmacro highlight-layout [{title :title, more-head :more-head} & body]
@@ -20,15 +21,12 @@
                                  [:script {:type "text/javascript"} 
                                   "hljs.tabReplace = '    ';"
                                   "hljs.initHighlightingOnLoad();"]
-                                 [:script {:type "text/javascript" :src "/highlight/languages/java.js"}]
-                                 [:script {:type "text/javascript" :src "/highlight/languages/bash.js"}]
-                                 [:script {:type "text/javascript" :src "/highlight/languages/lisp.js"}]
-                                 [:script {:type "text/javascript" :src "/highlight/highlight.js"}]
+                                 [:script {:type "text/javascript" :src "/highlight/highlight.pack.js"}]
                                  [:link {:rel "stylesheet" :href "/highlight/styles/github.css"}])}
      ~@body))
 
 (defmacro wmd-layout [{title :title, more-head :more-head} & body]
-  `(highlight-layout {:title ~title, 
+  `(default-layout {:title ~title, 
                       :more-head ~(conj
                                    more-head
                                    [:script {:type "text/javascript" :src "/wmd/wmd.js"}]

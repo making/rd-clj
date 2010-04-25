@@ -4,7 +4,10 @@
         [clojure.contrib.str-utils :only [str-join]]
         [rd-clj.validator.validator]
         [am.ik.clj-gae-ds.core]
-        [am.ik.clj-gae-users.core]))
+        [am.ik.clj-gae-users.core])
+  (:import [com.google.appengine.api.memcache 
+            MemcacheService MemcacheServiceFactory 
+            Expiration MemcacheService$SetPolicy]))
 
 (defn get-h [entity key]
   (let [v (get-prop entity key)]
@@ -27,6 +30,41 @@
 (defn params->query-string [params]
   (str-join \& (map #(str (key %) \= (url-enc (val %))) params)))
 
+(defn #^MemcacheService get-mc-service 
+  ([namespace]
+     (let [#^MemcacheService result (MemcacheServiceFactory/getMemcacheService)]
+       (if namespace (.setNamespace result namespace))
+       result))
+  ([]
+     (get-mc-service nil)))
+
+(defn mc-put 
+  ([namespace key value expiration set-policy]
+     (let [mc (get-mc-service namespace)]
+       (.put mc key value expiration set-policy)))
+  ([namespace key value expiration]
+     (mc-put namespace key value expiration MemcacheService$SetPolicy/SET_ALWAYS))
+  ([namespace key value]
+     (mc-put namespace key value (Expiration/byDeltaSeconds 86400)))) ; 1 day default
+
+(defn mc-get
+  ([namespace key default-value]
+     (let [result (.get (get-mc-service namespace) key)]
+       (or result default-value)))
+  ([namespace key]
+     (mc-get namespace key nil)))
+
+(defn mc-delete [namespace key]
+  (.delete (get-mc-service namespace) key))
+
+(defn mc-clear []
+  (.clearAll (get-mc-service)))  
+
+(defn mc-statistics []
+  (let [mc (get-mc-service)]
+    (.getStatistics mc)))
+
+;;
 (def #^{:private true}
      +view-base+ ".view.")
 
@@ -78,7 +116,7 @@
                [:div  {:class "right"}
                 [:h2 "ようこそ " 
                  (if (get-current-user) 
-                   (.getNickname (get-current-user))
+                   (get-nickname)
                    "Guest") "さん"]
                 [:ul
                  (if (get-current-user) 
@@ -86,13 +124,14 @@
                    [:li [:a {:href (fn->path-fmt login)} "LOGIN"]])]
                 ]
                [:div {:style "clear:both;"}]
-               [:div {:id "footer"} 
-                "&copy; clojure-users.org "
+               ]
+              [:div {:id "footer"} 
+               "&copy; " [:a {:href "http://clojure-users.org" :style "color:#333"} "clojure-users.org "]
                 [:img {:src "/images/appengine-noborder-120x30.gif"}]
-                " "
-                [:img {:src "/images/clojure-100x30.gif"}]
-                ]
-               ]]]])))
+               " "
+               [:img {:src "/images/clojure-100x30.gif"}]
+               ]
+              ]]])))
 
 (defn apply-auth
   ([fn]

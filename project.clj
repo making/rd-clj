@@ -21,6 +21,7 @@
   :library-path "war/WEB-INF/lib/"
   :namespaces [rd-clj
                rd-clj.utils
+               rd-clj.logger
                rd-clj.daccess.dict
                rd-clj.validator.validator
                rd-clj.view.entry

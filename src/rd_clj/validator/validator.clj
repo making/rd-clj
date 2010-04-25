@@ -23,5 +23,14 @@
     (if (and regex (not (re-matches re value)))
       (conj messages (str name " is not regular")))))
 
+(defmethod validate :long  [type name value attr messages]
+  (if (string? value)
+    (try
+     (Long/valueOf value)
+     messages
+     (catch NumberFormatException e
+       (conj messages (str name " is invalid number format"))))
+    messages))
+
 (defmethod validate :default [type name value attr messages]
   messages)

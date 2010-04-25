@@ -15,6 +15,7 @@
   (GET entry/delete)
   (GET entry/list)
   (GET entry/list-by-tag)
+  (ANY entry/version)
   (GET login)
   (GET logout)
   (GET hello/hello))

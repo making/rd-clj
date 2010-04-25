@@ -12,7 +12,7 @@
   (default-layout {}
     [:p 
      [:h2 "逆引き一覧"]
-     (show-dicts (get-dicts 10))
+     (show-dicts (get-dicts 10 :updated))
      [:p [:a {:href "/entry/list"} "全て見る"]]
      [:hr]
      [:a {:href "/entry/create"} "新規作成"]]))
