@@ -113,9 +113,10 @@ a:hover { text-decoration: underline; color : #000; }
     font-size: 14px;
     font-weight: 600;
 }
+
 .right ul {
-    list-style-type: none;
     padding: 5px 10px 10px 10px;
+    margin-left: 5px;
 }
 
 .right h2 {
