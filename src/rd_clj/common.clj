@@ -61,8 +61,8 @@
                 [:ul
                  (if (get-current-user) 
                    [:li [:a {:href (fn->path-fmt logout)} "LOGOUT"]]
-                   [:li [:a {:href (fn->path-fmt login)} "LOGIN"]])]
-                [:li [:a {:href "http://github.com/making/rd-clj"} "CODE"]]
+                   [:li [:a {:href (fn->path-fmt login)} "LOGIN"]])
+                 [:li [:a {:href "http://github.com/making/rd-clj"} "CODE"]]]
                 ]
                [:div {:style "clear:both;"}]
                ]
