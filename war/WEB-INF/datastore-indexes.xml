@@ -4,10 +4,4 @@
     <property name="title" direction="asc" />
     <property name="updated" direction="desc" />
   </datastore-index>
-  <datastore-index kind="tag" ancestor="false">
-    <property name="name" direction="asc" />
-  </datastore-index>
-  <datastore-index kind="version" ancestor="false">
-    <property name="updated" direction="desc" />
-  </datastore-index>
 </datastore-indexes>

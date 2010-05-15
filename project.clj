@@ -6,7 +6,7 @@
                  [org.clojure/clojure-contrib "1.1.0"]]
   :dependencies [[org.clojure/clojure "1.1.0"]
                  [org.clojure/clojure-contrib "1.1.0"]
-                 [compojure "0.4.0-SNAPSHOT"]
+                 [compojure "0.4.0-RC1"]
                  [am.ik/clj-gae-ds "0.2.0-SNAPSHOT"]
                  [am.ik/clj-gae-users "0.1.0-SNAPSHOT"]
                  [com.google.appengine/appengine-api-1.0-sdk "1.3.2"]
